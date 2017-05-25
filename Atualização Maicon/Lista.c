@@ -31,8 +31,8 @@ Lista* InserirLista(Lista* l, int i)
 void ImprimirLista(Lista* l)
 {
     Lista* p;
-    for (p = l; p != NULL; p = p->prox)
-        printf("info = %d\n", p->info);
+    for (p = l; p->prox!= NULL; p = p->prox)
+        printf("\nNumero = %d", p->info);
 }
 
 /* função vazia: retorna 1 se vazia ou 0 se não vazia */
