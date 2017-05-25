@@ -199,14 +199,15 @@ void MenuLista(L_Geral *cab, int *cont_l)
 			if ((op_lista < 1) || (op_lista > contador_percorre))
 				goto seleciona_lista;
 
-			contador_percorre = 0;
+			contador_percorre = 1;
 			aux_percorre = cab;
-		
-			while (contador_percorre < op_lista) 
+			
+			while (contador_percorre<op_lista) 
 			{
 				if(aux_percorre->flag=='3')
 					contador_percorre++;
-				else aux_percorre=aux_percorre->prox;
+	
+				aux_percorre=aux_percorre->prox;
 			} 
 			
 			printf("\n\nDigite o numero a ser inserido na lista %s: ", aux_percorre->nome);
