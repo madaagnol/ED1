@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "lista.h"
 
-
 struct lista
 {
     int info;
@@ -12,13 +11,15 @@ struct lista
 typedef struct lista Lista;
 
 /* função de criação: retorna uma lista vazia */
-Lista* lst_cria(void)
+Lista* CriarLista(Lista *novo)
 {
-    return NULL;
+    novo = (Lista *)malloc(sizeof(Lista));
+    novo->prox=NULL;
+    return novo;
 }
 
 /* inserção no início: retorna a lista atualizada */
-Lista* lst_insere(Lista* l, int i)
+Lista* InserirLista(Lista* l, int i)
 {
     Lista* novo = (Lista*) malloc(sizeof(Lista));
     novo->info = i;
@@ -27,21 +28,21 @@ Lista* lst_insere(Lista* l, int i)
 }
 
 /* função imprime: imprime valores dos elementos */
-void lst_imprime(Lista* l)
+void ImprimirLista(Lista* l)
 {
     Lista* p;
-    for (p = l; p != NULL; p = p->prox)
-        printf("info = %d\n", p->info);
+    for (p = l; p->prox!= NULL; p = p->prox)
+        printf("\nNumero = %d", p->info);
 }
 
 /* função vazia: retorna 1 se vazia ou 0 se não vazia */
-int lst_vazia(Lista* l)
+int VerListaVazia(Lista* l)
 {
     return (l == NULL);
 }
 
 /* função busca: busca um elemento na lista */
-Lista* busca(Lista* l, int v)
+Lista* BuscaLista(Lista* l, int v)
 {
     Lista* p;
     for (p=l; p!=NULL; p = p->prox)
@@ -54,7 +55,7 @@ Lista* busca(Lista* l, int v)
 }
 
 /* função retira: retira elemento da lista */
-Lista* lst_retira(Lista* l, int v)
+Lista* RetiraLista(Lista* l, int v)
 {
 // ponteiro para elemento anterior
     Lista* ant = NULL;
@@ -84,7 +85,7 @@ Lista* lst_retira(Lista* l, int v)
     return l;
 }
 
-void lst_libera(Lista* l)
+void LiberaLista(Lista* l)
 {
     Lista* p = l;
     while (p != NULL)

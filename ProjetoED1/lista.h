@@ -1,25 +1,15 @@
-#include <stdlib.h>
-#include <stdio.h>
-
 typedef struct lista Lista;
 
-/* funcao de criao: retorna uma lista vazia */
-Lista* lst_cria();
+Lista* CriarLista(Lista *novo);
 
-/* inserir no inicio: retorna a lista atualizada */
-Lista* lst_insere(Lista* l, int i);
+Lista* InserirLista(Lista* l, int i);
 
-/* Função imprime: imprime valores dos elementos */
-void lst_imprime(Lista* l);
+void ImprimirLista(Lista* l);
 
-/* Função vazia: retorna 1 se vazia ou 0 se nao vazia */
-int lst_vazia(Lista* l);
+int VerListaVazia(Lista* l);
 
-/* Função busca: busca um elemento na lista */
-Lista* busca(Lista* l, int v);
+Lista* BuscaLista(Lista* l, int v);
 
-/* Função retira: retira elemento da lista */
-Lista* lst_retira(Lista* l, int v);
+Lista* RetiraLista(Lista* l, int v);
 
-/*Libera a lista completa*/
-void lst_libera(Lista* l);
+void LiberaLista(Lista* l);
