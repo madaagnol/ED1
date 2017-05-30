@@ -6,7 +6,7 @@
 
 typedef struct lista Lista;
 
-struct fila 
+struct fila
 {
 	Lista* ini;
 	Lista* fim;
@@ -23,11 +23,11 @@ Fila* fila_cria(Fila *e)
 	}
 	else
 	{
-		printf("\n\n\t\tFila já criada!");
+		printf("\n\n\t\tFila ja criada!");
 		getch();
 		return e;
 	}
-	
+
 }
 
 void fila_insere(Fila *f)
@@ -36,12 +36,12 @@ void fila_insere(Fila *f)
 	{
 		Lista *l = (Lista *)malloc(sizeof(Lista));
 		int x;
-		
+
 		l->prox = NULL;
-	
+
 		printf("\n\n\t\tInserir elemento: ");
 		scanf("%d",&l->info);
-		
+
 		if(f->ini==NULL)
 		{
 			f->ini=l;
@@ -53,10 +53,10 @@ void fila_insere(Fila *f)
 			f->fim=l;
 		}
 	}
-	else 
+	else
 	{
 		printf("\n\n\t\tLista Vazia");
-		getch();	
+		getch();
 	}
 }
 
@@ -68,20 +68,20 @@ int fila_retira(Fila *f)
 		f->ini=f->ini->prox;
 		free(aux);
 	}
-	else 
+	else
 	{
 		printf("\n\n\t\tLista Vazia");
-		getch();	
+		getch();
 	}
-	
-		
+
+
 }
 
 int fila_vazia(Fila *f)
 {
 	if(f==NULL)return 1;
 	else return 0;
-	
+
 }
 
 void fila_libera(Fila *f)
@@ -91,33 +91,33 @@ void fila_libera(Fila *f)
 		while(f->ini!=NULL)
 			fila_retira(f);
 	}
-	else 
+	else
 	{
 		printf("\n\n\t\tLista Vazia");
-		getch();	
+		getch();
 	}
-}	
+}
 
 void fila_imprime(Fila *f)
 {
 	if(!fila_vazia(f) && (f->ini!=NULL))
 	{
-		Lista *aux; 
-		
+		Lista *aux;
+
 		aux = f->ini;
-		
+
 		printf("\n\n\t\tFila: ");
-		while (aux != NULL) 
+		while (aux != NULL)
 		{
 			printf("%d ", aux->info);
 			aux = aux->prox;
-		}	
+		}
 		getch();
 	}
-	else 
+	else
 	{
 		printf("\n\n\t\tLista Vazia");
-		getch();	
+		getch();
 	}
-	
+
 }

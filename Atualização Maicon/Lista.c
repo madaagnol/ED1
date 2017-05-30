@@ -32,7 +32,7 @@ void ImprimirLista(Lista* l)
 {
     Lista* p;
     for (p = l; p->prox!= NULL; p = p->prox)
-        printf("\nNumero = %d", p->info);
+        printf("%d ", p->info);
 }
 
 /* função vazia: retorna 1 se vazia ou 0 se não vazia */
@@ -57,27 +57,26 @@ Lista* BuscaLista(Lista* l, int v)
 /* função retira: retira elemento da lista */
 Lista* RetiraLista(Lista* l, int v)
 {
-// ponteiro para elemento anterior
+
     Lista* ant = NULL;
     Lista* p = l;
-    /* ponteiro para percorrer a lista*/
-    /* procura elemento na lista, guardando anterior */
+
     while (p != NULL && p->info != v)
     {
         ant = p;
         p = p->prox;
     }
-    /* verifica se achou elemento */
+
     if (p == NULL)
-        /* não achou: retorna lista original*/
+
         return l;
-        /* retira elemento */
+
         if (ant == NULL)
         {
-            /* retira elemento do inicio */
+
             l = p->prox;
         }
-        else   /* retira elemento do meio da lista */
+        else
         {
             ant->prox = p->prox;
         }
