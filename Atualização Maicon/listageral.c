@@ -2,8 +2,8 @@
 
 union No
 {
-	//Fila *no_f;
-	//Pilha *no_p;
+	Fila *fila;
+	Pilha *pilha;
 	Lista *lista;
 };
 typedef union No tipo;
@@ -74,7 +74,7 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 {
 	L_Geral *no_list;
 
-	/*	if(flag=='1')
+		if(flag=='1')
 	{
 		Pilha *nova_pilha;
 		no_list = (L_Geral *)malloc(sizeof(L_Geral)); //Aloca um n� da lista principal
@@ -90,7 +90,7 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 		(*cont)++;
 		return no_list;
 	}
-
+/*
 	if(flag=='2')
 	{
 		Fila *nova_fila;
