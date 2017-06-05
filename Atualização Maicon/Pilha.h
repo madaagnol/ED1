@@ -7,7 +7,7 @@ typedef struct pilha Pilha;
 Pilha* CriarPilha();
 
 /*Coloca +1 elemento na pilha no topo*/
-void InserirPilha();
+Pilha*  InserirPilha();
 
 /*Elimina o top da pilha*/
 int RetiraPilha(Pilha *p);

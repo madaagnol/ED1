@@ -35,7 +35,8 @@ L_Geral* SelecaoPilha(L_Geral *cab,int v)
 			fflush(stdin);
 			scanf("%d", &resp);
 
-		//	aux->estrutura.pilha = InserirPilha(aux->estrutura.pilha, resp);
+			aux->estrutura.pilha=InserirPilha(aux->estrutura.pilha, resp);
+			
 		break;
 
 		case 2:

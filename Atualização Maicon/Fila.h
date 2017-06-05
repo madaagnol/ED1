@@ -4,7 +4,7 @@ typedef struct fila Fila;
 Fila* CriarFila();
 
 /*Insere na fila*/
-void InserirFila(Fila *f);
+Fila * InserirFila(Fila *f);
 
 /*Retira da fila*/
 int RetiraFila(Fila *f);

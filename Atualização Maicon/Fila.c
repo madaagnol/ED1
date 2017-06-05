@@ -8,26 +8,25 @@ struct fila
 	Lista* ini;
 	Lista* fim;
 };
-/*
+
 Fila* CriarFila(Fila *e)
 {
 		Fila *f= (Fila* )malloc(sizeof(Fila));
 		f->ini=NULL;
-		f->fim=NULL;
+		f->ini=CriarLista(f->ini);
+		f->ini=NULL;
+		f->fim=f->ini;
 		return f;	
 
 }
 
-void InserirFila(Fila *f)
+Fila * InserirFila(Fila *f,int x)
 {
-	int x;
+
 	Lista *l;
+	l=CriarLista(l);
+	l->info=x;
 	
-	printf("\n\n\t\tInserir elemento: ");
-	scanf("%d",&x);
-		
-	l=InserirLista(l,x);
-		
 	if(f->ini==NULL)
 	{
 		f->ini=l;
@@ -45,7 +44,7 @@ int RetiraFila(Fila *f)
 	if(!VerFilaVazia(f) && (f->ini!=NULL))
 	{
 		Lista *aux=f->ini;
-		f->ini=f->ini->prox;
+	//	f->ini=f->ini->prox;
 		free(aux);
 	}
 	else
@@ -80,24 +79,5 @@ void LiberaFila(Fila *f)
 
 void ImprimirFila(Fila *f)
 {
-	if(!VerFilaVazia(f) && (f->ini!=NULL))
-	{
-		Lista *aux;
-
-		aux = f->ini;
-
-		printf("\n\n\t\tFila: ");
-		while (aux != NULL)
-		{
-			printf("%d ", aux->info);
-			aux = aux->prox;
-		}
-		getch();
-	}
-	else
-	{
-		printf("\n\n\t\tLista Vazia");
-		getch();
-	}
-
-}*/
+	ImprimirLista(f->ini);
+}

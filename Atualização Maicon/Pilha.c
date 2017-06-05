@@ -12,28 +12,17 @@ struct pilha
 
 Pilha* CriarPilha(Pilha *p)
 {
-		p = (Pilha*)malloc(sizeof(Pilha));
-		p->topo = NULL;
-
-		printf("\n\n\t\t\tPilha criada com sucesso!");
-		return p;
+	p = (Pilha*)malloc(sizeof(Pilha));
+	p->topo=CriarLista(p->topo);
+	p->topo=NULL;
+	return p;
+		
 }
 
-void InserirPilha(Pilha *p)
+Pilha* InserirPilha(Pilha *p,int x)
 {
-	int x;
-	if(!VerPilhaVazia(p))
-	{
-		printf("\n\n\t\tInserir elemento: ");
-		scanf("%d",&x);
-		p->topo = InserirLista(p->topo,x);
-	}
-	else
-	{
-		printf("\n\n\t\tPilha inexistente!");
-		getch();
-	}
-
+	p->topo = InserirLista(p->topo,x);
+	return p;
 }
 
 int RetiraPilha(Pilha *p)
@@ -71,13 +60,7 @@ void LiberaPilha(Pilha *p)
 
 void ImprimirPilha(Pilha *p)
 {
-	if(!VerPilhaVazia(p) && p->topo!=NULL)
-		ImprimirLista(p->topo);
-
-	else printf("\n\n\t\t\tERRO, PILHA VAZIA");
-	printf("\n\n\t\tPRESSIONE ENTER PARA CONTINUAR");
-
-	getch();
+	ImprimirLista(p->topo);
 }
 
 int pilha_ver_topo(Pilha *p)

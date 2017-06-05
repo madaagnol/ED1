@@ -90,13 +90,13 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 		(*cont)++;
 		return no_list;
 	}
-/*
+
 	if(flag=='2')
 	{
 		Fila *nova_fila;
 		no_list = (L_Geral *)malloc(sizeof(L_Geral)); //Aloca um n� da lista principal
 		nova_fila=CriarFila(nova_fila); //Cria uma nova lista
-		no_list->estrutura.fila=nova_lista; //Faz a lista geral criada apontar para a cabeça da fila criada
+		no_list->estrutura.fila=nova_fila; //Faz a lista geral criada apontar para a cabeça da fila criada
 
 		no_list->flag = '3';
 		printf("Digite o nome da fila: ");
@@ -107,7 +107,7 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 		(*cont)++;
 		return no_list;
 	}
-	*/
+	
 	if(flag=='3')
 	{
 		Lista *nova_lista;
