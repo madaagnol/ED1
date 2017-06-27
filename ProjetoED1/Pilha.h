@@ -4,22 +4,19 @@ typedef struct pilha Pilha;
 #define max 10
 
 /*Cria pilha */
-Pilha* pilha_cria();
-
-/*Verifica se a pilha esta cheia*/
-int pilha_cheia();
+Pilha* CriarPilha();
 
 /*Coloca +1 elemento na pilha no topo*/
-void pilha_push();
+Pilha*  InserirPilha();
 
 /*Elimina o top da pilha*/
-int pilha_pop(Pilha *p);
+int RetiraPilha(Pilha *p);
 
 /*Fala se a pilha esta vazia ou cheia*/
-int pilha_vazia(Pilha *p);
+int VerPilhaVazia(Pilha *p);
 
 /*Esvazia a pilha*/
-void pilha_libera();
+void LiberaPilha();
 
 /*Imprime a pilha toda*/
-void pilha_imprime();
+void ImprimirPilha();
