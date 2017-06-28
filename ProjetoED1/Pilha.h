@@ -1,12 +1,13 @@
 #ifndef _Pilha_H_
 #define _Pilha_H_
+#define max 10
 
 typedef struct pilha
 {
 	Lista *topo;
 }Pilha;
 
-#define max 10
+
 
 /*Cria pilha */
 Pilha* CriarPilha();

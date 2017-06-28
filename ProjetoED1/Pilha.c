@@ -19,15 +19,13 @@ int RetiraPilha(Pilha *p)
 {
 	Lista *aux=p->topo;
 	
-	if (p->topo != NULL) {
+	if (p->topo != NULL) 
+	{
 		p->topo=p->topo->prox;
 		free(aux);
-	
-		printf("\n\n\t\tTopo retirado");
-	} else {
+	} 
+	else 
 		printf ("\n\n\t\tErro. Pilha vazia.");
-	}
-	getch();
 
 }
 

@@ -1,6 +1,5 @@
 #include "Lista.h"
 
-/* função de criação: retorna uma lista vazia */
 Lista* CriarLista(Lista *novo)
 {
     novo = (Lista *)malloc(sizeof(Lista));
@@ -8,7 +7,6 @@ Lista* CriarLista(Lista *novo)
     return novo;
 }
 
-/* inserção no início: retorna a lista atualizada */
 Lista* InserirLista(Lista* l, int i)
 {
     Lista* novo = CriarLista(novo);
@@ -17,7 +15,6 @@ Lista* InserirLista(Lista* l, int i)
     return novo;
 }
 
-/* função imprime: imprime valores dos elementos */
 void ImprimirLista(Lista* l)
 {
     Lista* p;
@@ -25,13 +22,11 @@ void ImprimirLista(Lista* l)
         printf("%d ", p->info);
 }
 
-/* função vazia: retorna 1 se vazia ou 0 se não vazia */
 int VerListaVazia(Lista* l)
 {
     return (l == NULL);
 }
 
-/* função busca: busca um elemento na lista */
 Lista* BuscaLista(Lista* l, int v)
 {
     Lista* p;
@@ -44,7 +39,6 @@ Lista* BuscaLista(Lista* l, int v)
     return NULL;
 }
 
-/* função retira: retira elemento da lista */
 Lista* RetiraLista(Lista* l, int v)
 {
 
@@ -58,18 +52,17 @@ Lista* RetiraLista(Lista* l, int v)
     }
 
     if (p == NULL)
-
         return l;
 
-        if (ant == NULL)
-        {
-
-            l = p->prox;
-        }
-        else
-        {
-            ant->prox = p->prox;
-        }
+    if (ant == NULL)
+    {
+		l = p->prox;
+    }
+    else
+    {
+        ant->prox = p->prox;
+    }
+    
     free(p);
     return l;
 }

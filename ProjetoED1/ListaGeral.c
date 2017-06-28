@@ -1,9 +1,20 @@
-#include "listageral.h"
+#include "ListaGeral.h"
+#include "Pilha.c"
+#include "Pilha.h"
+
+#include "Fila.c"
+#include "Fila.h"
+
+#include "Lista.c"
+#include "Lista.h"
+
+#include "ArvBinBusca.c"
+#include "ArvBinBusca.h"
 
 union No
 {
-	Fila *fila;
 	Pilha *pilha;
+	Fila *fila;
 	Lista *lista;
 	ABBusca *arvbb;
 };
@@ -27,48 +38,50 @@ void ImprimirGeral(L_Geral *cab,char flag)
 		if (flag == aux_percorre->flag)
 		{
 			contador_percorre++;
-			printf("%d) - %s\n", contador_percorre, aux_percorre->nome);
+			printf("\t%d) - %s\n", contador_percorre, aux_percorre->nome);
 		}
 		aux_percorre = aux_percorre->prox;
 	}
 }
 
-L_Geral* RetiraGeral(L_Geral* l, int v)
+L_Geral* RetiraGeral(L_Geral* l,int v,char flag)
 {
     L_Geral* ant = NULL;
     L_Geral* p = l;
-    int cont=1;
-
-
-    /* ponteiro para percorrer a lista*/
-    /* procura elemento na lista, guardando anterior */
+    int cont=0;
+    
     while (p != NULL && cont!=v)
     {
-    	if(p->flag == '4')
+    	if(p->flag == flag)
 			cont++;
+			
+		if (cont == v)
+			break;
+			
         ant = p;
         p = p->prox;
     }
 
-	/* verifica se achou elemento */
-    LiberaLista(p->estrutura.lista);
-    if (p == NULL)
-        /* n�o achou: retorna lista original*/
-        return l;
-        /* retira elemento */
-        if (ant == NULL)
-        {
-            /* retira elemento do inicio */
-            l = p->prox;
-        }
-        else   /* retira elemento do meio da lista */
-        {
-            ant->prox = p->prox;
-        }
-        
-        
+    if(cont<v)
+    	return l;
+    	
+	if(flag == '1') LiberaLista(p->estrutura.pilha->topo);
 
+	else if(flag == '2') LiberaLista(p->estrutura.fila->ini);
+
+	else if(flag == '3') LiberaLista(p->estrutura.lista);
+
+    else DestroiABBusca(&p->estrutura.arvbb);
+    
+
+    if (ant == NULL)
+        l = p->prox;
+    
+    else  
+        ant->prox = p->prox;
+    
     free(p);
+
     return l;
 }
 
@@ -78,17 +91,19 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 
 	if(flag=='1')
 	{
-		Pilha *nova_pilha;
-		no_list = (L_Geral *)malloc(sizeof(L_Geral)); //Aloca um n� da lista principal
-	//	nova_pilha=CriarPilha(nova_pilha); //Cria uma nova lista
-		no_list->estrutura.pilha=nova_pilha; //Faz a lista geral criada apontar para a cabeça da pilha criada
+		Pilha *nova_pilha=CriarPilha(nova_pilha);
+		
+		no_list = (L_Geral *)malloc(sizeof(L_Geral));
+		
+		no_list->estrutura.pilha=nova_pilha; 
 
 		no_list->flag = '1';
-		printf("Digite o nome da pilha: ");
+		
+		printf("\tNome da pilha: ");
 		fflush(stdin);
 		gets(no_list->nome);
 
-		no_list->prox=cab; //Faz a lista criada ser inserida na primeira posição
+		no_list->prox=cab; 
 		(*cont)++;
 		return no_list;
 	}
@@ -96,16 +111,15 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 	if(flag=='2')
 	{
 		Fila *nova_fila;
-		no_list = (L_Geral *)malloc(sizeof(L_Geral)); //Aloca um n� da lista principal
-		//nova_fila=CriarFila(nova_fila); //Cria uma nova lista
-		no_list->estrutura.fila=nova_fila; //Faz a lista geral criada apontar para a cabeça da fila criada
-
+		no_list = (L_Geral *)malloc(sizeof(L_Geral)); 
+		nova_fila=CriarFila(nova_fila);
+		no_list->estrutura.fila=nova_fila; 
 		no_list->flag = '2';
-		printf("Digite o nome da fila: ");
+		printf("\tNome da fila: ");
 		fflush(stdin);
 		gets(no_list->nome);
 
-		no_list->prox=cab; //Faz a lista criada ser inserida na primeira posição
+		no_list->prox=cab; 
 		(*cont)++;
 		return no_list;
 	}
@@ -113,12 +127,11 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 	if(flag=='3')
 	{
 		Lista *nova_lista;
-		no_list = (L_Geral *)malloc(sizeof(L_Geral)); //Aloca um n� da lista principal
-		//nova_lista=CriarLista(nova_lista); //Cria uma nova lista
-		no_list->estrutura.lista=nova_lista; //Faz a lista geral criada apontar para a cabeça da lista criada
+		no_list = (L_Geral *)malloc(sizeof(L_Geral)); 
+		no_list->estrutura.lista=nova_lista; 
 
 		no_list->flag = '3';
-		printf("Digite o nome da lista: ");
+		printf("\tNome da lista: ");
 		fflush(stdin);
 		gets(no_list->nome);
 
@@ -130,18 +143,17 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 
 		if(flag=='4')
 	{
-		no_list = (L_Geral *)malloc(sizeof(L_Geral)); //Aloca um n� da lista principal
-		no_list->estrutura.arvbb = NULL; //Faz a lista geral criada apontar para a cabeça da arvore criada
+		no_list = (L_Geral *)malloc(sizeof(L_Geral)); 
+		no_list->estrutura.arvbb = NULL; 
 
 		no_list->flag = '4';
-		printf("Digite o nome da arvore: ");
+		printf("\tNome da arvore: ");
 		fflush(stdin);
 		gets(no_list->nome);
 
 		no_list->prox=cab;
-		cab=no_list; //Faz a lista criada ser inserida na primeira posição
 		(*cont)++;
-		return cab;
+		return no_list;
 	}
 
 }

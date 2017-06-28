@@ -1,8 +1,9 @@
 #include "Menus.h"
 #include "Selecao.h"
+#include "Selecao.c"
 
 
-L_Geral * MenuPilha(L_Geral *cab, int *cont_p)
+L_Geral* MenuPilha(L_Geral *cab, int *cont_p)
 {
 
 	int menu, op_pilha;
@@ -10,18 +11,19 @@ L_Geral * MenuPilha(L_Geral *cab, int *cont_p)
 	returnPilha: system("cls");
 	printf("TRABALHO ESTRUTURA DE DADOS I - PILHAS\n");
 	printf("________________________________________________________\n\n");
-	printf("Pilhas existentes: %d\n", *cont_p);
+	printf("\tPilhas existentes: %d\n", *cont_p);
 	printf("________________________________________________________\n\n");
 
-	printf("Selecione a op√ß√£o a ser manipulada:\n");
-	printf("\t1 - Criar Pilha\n");
-	printf("\t2 - Excluir Pilha\n");
-	printf("\t3 - Exibir todas Pilhas\n");
-	printf("\t4 - Selecionar Pilha\n");
+	printf("\tSelecione a opÁ„o:\n");
+	printf("\t1 - Criar uma pilha\n");
+	printf("\t2 - Excluir uma pilha\n");
+	printf("\t3 - Exibir todas as pilhas\n");
+	printf("\t4 - Selecionar uma pilha\n");
 	printf("\t0 - Voltar\n");
-	printf("\n\tOp√ß√£o: ");
+	printf("\n\tOpÁ„o: ");
 	scanf("%d", &menu);
-
+	printf("\n\n________________________________________________________\n\n");
+	
 	switch(menu)
 	{
 		case 0:
@@ -30,23 +32,23 @@ L_Geral * MenuPilha(L_Geral *cab, int *cont_p)
 
 		case 1:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - CRIA√á√ÉO DE PILHA\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - CRIA«√O DE PILHA\n");
 			printf("________________________________________________________\n\n");
 
 			cab=CriarGeral(cab,'1',&(*cont_p));
-			printf("\n\n\tPilha Criada!");
+			printf("\n\n\tPilha criada.");
 			getch();
 		break;
 
 		case 2:
 			seleciona_pilha:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - EXCLUS√ÉO DE PILHA\n");
-			printf("_________________________________________________\n\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - EXCLUS√O DE PILHA\n");
+			printf("________________________________________________________\n\n");
 
 			if(*cont_p==0)
 			{
-				printf("\tN√£o h√° pilhas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· pilhas. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
@@ -54,14 +56,14 @@ L_Geral * MenuPilha(L_Geral *cab, int *cont_p)
 				ImprimirGeral(cab,'1');
 				printf("\n________________________________________________________\n\n");
 
-				printf("N√∫mero da pilha √† excluir: ");
+				printf("\tN˙mero da pilha: ");
 				fflush(stdin);
 				scanf("%d", &op_pilha);
 
 				if ((op_pilha < 1) || (op_pilha > *cont_p))
 					goto seleciona_pilha;
 
-				cab=RetiraGeral(cab,op_pilha);
+				cab=RetiraGeral(cab,op_pilha,'1');
 				(*cont_p)--;
 			}
 
@@ -69,18 +71,18 @@ L_Geral * MenuPilha(L_Geral *cab, int *cont_p)
 
 		case 3:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - IMPRESS√ÉO DE PILHA\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - IMPRESS√O DE PILHA\n");
 			printf("________________________________________________________\n\n");
 			if(*cont_p==0)
 			{
-				printf("\tN√£o h√° pilhas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· pilhas. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
 			{
 				ImprimirGeral(cab,'1');
-				printf("\n________________________________________________________\n\n");
-				printf("\tPressione ENTER para voltar");
+				printf("________________________________________________________\n\n");
+				printf("\tPressione ENTER para voltar.");
 			}
 			getch();
 		break;
@@ -88,13 +90,13 @@ L_Geral * MenuPilha(L_Geral *cab, int *cont_p)
 		case 4:
 
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - SELE√á√ÉO DE PILHA\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - SELE«√O DE PILHA\n");
 
 			printf("________________________________________________________\n\n");
 
 			if(*cont_p==0)
 			{
-				printf("\tN√£o h√° pilhas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· pilhas.Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
@@ -103,7 +105,7 @@ L_Geral * MenuPilha(L_Geral *cab, int *cont_p)
 				printf("\n________________________________________________________\n\n");
 
 
-				seleciona_pilha2:printf("N√∫mero da pilha √† selecionar: ");
+				seleciona_pilha2:printf("\tN˙mero da pilha: ");
 				fflush(stdin);
 				scanf("%d", &op_pilha);
 
@@ -118,7 +120,7 @@ L_Geral * MenuPilha(L_Geral *cab, int *cont_p)
 		break;
 
 		default:
-			printf("\nOp√ß√£o inv√°lida");
+			printf("\nOpÁ„o inv·lida.");
 			getch();
 		break;
 
@@ -135,16 +137,16 @@ L_Geral * MenuFila(L_Geral *cab, int *cont_f)
 	returnFilas: system("cls");
 	printf("TRABALHO ESTRUTURA DE DADOS I - FILAS\n");
 	printf("________________________________________________________\n\n");
-	printf("Filass existentes: %d\n", *cont_f);
+	printf("\tFilas existentes: %d\n", *cont_f);
 	printf("________________________________________________________\n\n");
 
-	printf("Selecione a op√ß√£o a ser manipulada:\n");
-	printf("\t1 - Criar Filas\n");
-	printf("\t2 - Excluir Filas\n");
-	printf("\t3 - Exibir todas Filass\n");
-	printf("\t4 - Selecionar Filas\n");
+	printf("\tSelecione a opÁ„o:\n");
+	printf("\t1 - Criar uma fila\n");
+	printf("\t2 - Excluir uma fila\n");
+	printf("\t3 - Exibir todas as filas\n");
+	printf("\t4 - Selecionar uma fila\n");
 	printf("\t0 - Voltar\n");
-	printf("\n\tOp√ß√£o: ");
+	printf("\n\tOpÁ„o: ");
 	scanf("%d", &menu);
 
 	switch(menu)
@@ -155,23 +157,23 @@ L_Geral * MenuFila(L_Geral *cab, int *cont_f)
 
 		case 1:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - CRIA√á√ÉO DE FILA\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - CRIA«√O DE FILA\n");
 			printf("________________________________________________________\n\n");
 
 			cab=CriarGeral(cab,'2',&(*cont_f));
-			printf("\n\n\tFilas Criada!");
+			printf("\n\n\tFila criada.");
 			getch();
 		break;
 
 		case 2:
 			seleciona_fila:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - EXCLUS√ÉO DE FILA\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - EXCLUS√O DE FILA\n");
 			printf("_________________________________________________\n\n");
 
 			if(*cont_f==0)
 			{
-				printf("\tN√£o h√° filas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· filas. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
@@ -179,14 +181,14 @@ L_Geral * MenuFila(L_Geral *cab, int *cont_f)
 				ImprimirGeral(cab,'2');
 				printf("\n________________________________________________________\n\n");
 
-				printf("N√∫mero da fila √† excluir: ");
+				printf("\tN˙mero da fila: ");
 				fflush(stdin);
 				scanf("%d", &op_fila);
 
 				if ((op_fila < 1) || (op_fila > *cont_f))
 					goto seleciona_fila;
 
-				cab=RetiraGeral(cab,op_fila);
+				cab=RetiraGeral(cab,op_fila,'2');
 				(*cont_f)--;
 			}
 
@@ -194,17 +196,17 @@ L_Geral * MenuFila(L_Geral *cab, int *cont_f)
 
 		case 3:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - IMPRESS√ÉO DE FILA\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - IMPRESS√O DE FILA\n");
 			printf("________________________________________________________\n\n");
 			if(*cont_f==0)
 			{
-				printf("\tN√£o h√° filas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· filas. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
 			{
 				ImprimirGeral(cab,'2');
-				printf("\n________________________________________________________\n\n");
+				printf("________________________________________________________\n\n");
 				printf("\tPressione ENTER para voltar");
 			}
 			getch();
@@ -213,22 +215,22 @@ L_Geral * MenuFila(L_Geral *cab, int *cont_f)
 		case 4:
 
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - SELE√á√ÉO DE FILA\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - SELE«√O DE FILA\n");
 
 			printf("________________________________________________________\n\n");
 
 			if(*cont_f==0)
 			{
-				printf("\tN√£o h√° filas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· filas. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
 			{
 				ImprimirGeral(cab,'2');
-				printf("\n________________________________________________________\n\n");
+				printf("________________________________________________________\n\n");
 
 
-				seleciona_fila2:printf("N√∫mero da fila √† selecionar: ");
+				seleciona_fila2:printf("\tN˙mero da fila: ");
 				fflush(stdin);
 				scanf("%d", &op_fila);
 
@@ -236,14 +238,12 @@ L_Geral * MenuFila(L_Geral *cab, int *cont_f)
 				if ((op_fila < 1) || (op_fila > * cont_f))
 					goto seleciona_fila2;
 
-
-
 				cab=SelecaoFila(cab,op_fila);
 			}
 		break;
 
 		default:
-			printf("\nOp√ß√£o inv√°lida");
+			printf("\nOpÁ„o inv·lida");
 			getch();
 		break;
 
@@ -260,16 +260,16 @@ L_Geral * MenuLista(L_Geral *cab, int *cont_l)
 	returnLista: system("cls");
 	printf("TRABALHO ESTRUTURA DE DADOS I - LISTAS\n");
 	printf("________________________________________________________\n\n");
-	printf("Listas existentes: %d\n", *cont_l);
+	printf("\tListas existentes: %d\n", *cont_l);
 	printf("________________________________________________________\n\n");
 
-	printf("Selecione a op√ß√£o a ser manipulada:\n");
-	printf("\t1 - Criar Lista\n");
-	printf("\t2 - Excluir Lista\n");
-	printf("\t3 - Exibir todas Listas\n");
-	printf("\t4 - Selecionar Lista\n");
+	printf("\tSelecione a opÁ„o:\n");
+	printf("\t1 - Criar uma lista\n");
+	printf("\t2 - Excluir uma lista\n");
+	printf("\t3 - Exibir todas as listas\n");
+	printf("\t4 - Selecionar uma lista\n");
 	printf("\t0 - Voltar\n");
-	printf("\n\tOp√ß√£o: ");
+	printf("\n\tOpÁ„o: ");
 	scanf("%d", &menu);
 
 	switch(menu)
@@ -280,23 +280,23 @@ L_Geral * MenuLista(L_Geral *cab, int *cont_l)
 
 		case 1:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - CRIA√á√ÉO DE √ÅRVORE\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - CRIA«√O DE LISTA\n");
 			printf("________________________________________________________\n\n");
 
 			cab=CriarGeral(cab,'3',&(*cont_l));
-			printf("\n\n\tLista Criada!");
+			printf("\n\tLista criada.");
 			getch();
 		break;
 
 		case 2:
 			seleciona_lista:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - EXCLUS√ÉO DE √ÅRVORE\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - EXCLUS√O DE LISTA\n");
 			printf("_________________________________________________\n\n");
 
 			if(*cont_l==0)
 			{
-				printf("\tN√£o h√° listas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· listas. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
@@ -304,14 +304,14 @@ L_Geral * MenuLista(L_Geral *cab, int *cont_l)
 				ImprimirGeral(cab,'3');
 				printf("\n________________________________________________________\n\n");
 
-				printf("N√∫mero da lista √† excluir: ");
+				printf("\tN˙mero da lista: ");
 				fflush(stdin);
 				scanf("%d", &op_lista);
 
 				if ((op_lista < 1) || (op_lista > *cont_l))
 					goto seleciona_lista;
 
-				cab=RetiraGeral(cab,op_lista);
+				cab=RetiraGeral(cab,op_lista,'3');
 				(*cont_l)--;
 			}
 
@@ -319,18 +319,18 @@ L_Geral * MenuLista(L_Geral *cab, int *cont_l)
 
 		case 3:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - IMPRESS√ÉO DE √ÅRVORE\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - IMPRESS√O DE LISTA\n");
 			printf("________________________________________________________\n\n");
 			if(*cont_l==0)
 			{
-				printf("\tN√£o h√° listas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· listas. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
 			{
 				ImprimirGeral(cab,'3');
 				printf("\n________________________________________________________\n\n");
-				printf("\tPressione ENTER para voltar");
+				printf("\tPressione ENTER para voltar.");
 			}
 			getch();
 		break;
@@ -338,13 +338,13 @@ L_Geral * MenuLista(L_Geral *cab, int *cont_l)
 		case 4:
 
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - SELE√á√ÉO DE √ÅRVORE\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - SELE«√O DE LISTA\n");
 
 			printf("________________________________________________________\n\n");
 
 			if(*cont_l==0)
 			{
-				printf("\tN√£o h√° listas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· listas. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
@@ -353,29 +353,20 @@ L_Geral * MenuLista(L_Geral *cab, int *cont_l)
 				printf("\n________________________________________________________\n\n");
 
 
-				seleciona_lista2:printf("N√∫mero da lista √† selecionar: ");
+				seleciona_lista2:printf("\tN˙mero da lista: ");
 				fflush(stdin);
 				scanf("%d", &op_lista);
 
 
 				if ((op_lista < 1) || (op_lista > * cont_l))
-				{
-
-					printf("\r");
-			        for (int j = 0; j < 30; j++) {
-			            printf(" "); // apaga a linha anterior
-			        }
-			        printf("\r");
 					goto seleciona_lista2;
-				}
-
 
 				cab=SelecaoLista(cab,op_lista);
 			}
 		break;
 
 		default:
-			printf("\nOp√ß√£o inv√°lida");
+			printf("\nOpÁ„o inv·lida");
 			getch();
 		break;
 
@@ -390,18 +381,18 @@ L_Geral * MenuArvBB(L_Geral *cab, int *cont_a)
 	int menu, op_lista;
 
 	returnArvBB: system("cls");
-	printf("TRABALHO ESTRUTURA DE DADOS I - √ÅRVORES\n");
+	printf("TRABALHO ESTRUTURA DE DADOS I - ¡RVORES \n");
 	printf("________________________________________________________\n\n");
-	printf("ArvBBs existentes: %d\n", *cont_a);
+	printf("\t¡rvores de busca existentes: %d\n", *cont_a);
 	printf("________________________________________________________\n\n");
 
-	printf("Selecione a op√ß√£o a ser manipulada:\n");
-	printf("\t1 - Criar ArvBB\n");
-	printf("\t2 - Excluir ArvBB\n");
-	printf("\t3 - Exibir todas ArvBBs\n");
-	printf("\t4 - Selecionar ArvBB\n");
+	printf("\tSelecione a opÁ„o:\n");
+	printf("\t1 - Criar uma ·rvore de busca\n");
+	printf("\t2 - Excluir uma ·rvore de busca\n");
+	printf("\t3 - Exibir todas as ·rvore de busca\n");
+	printf("\t4 - Selecionar uma ·rvore de busca\n");
 	printf("\t0 - Voltar\n");
-	printf("\n\tOp√ß√£o: ");
+	printf("\n\tOpÁ„o: ");
 	scanf("%d", &menu);
 
 	switch(menu)
@@ -412,23 +403,23 @@ L_Geral * MenuArvBB(L_Geral *cab, int *cont_a)
 
 		case 1:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - CRIA√á√ÉO DE √ÅRVORE\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - CRIA«√O DE ¡RVORE\n");
 			printf("________________________________________________________\n\n");
 
 			cab=CriarGeral(cab,'4',&(*cont_a));
-			printf("\n\n\tArvBB Criada!");
+			printf("\n\tArvBB criada.");
 			getch();
 		break;
 
 		case 2:
 			seleciona_arvbb:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - EXCLUS√ÉO DE √ÅRVORE\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - EXCLUS√O DE ¡RVORE\n");
 			printf("_________________________________________________\n\n");
 
 			if(*cont_a==0)
 			{
-				printf("\tN√£o h√° listas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· ·rvores. Pressione ENTER para voltar\n");
 				getch();
 			}
 			else
@@ -436,14 +427,14 @@ L_Geral * MenuArvBB(L_Geral *cab, int *cont_a)
 				ImprimirGeral(cab,'4');
 				printf("\n________________________________________________________\n\n");
 
-				printf("N√∫mero da lista √† excluir: ");
+				printf("\tN˙mero da lista : ");
 				fflush(stdin);
 				scanf("%d", &op_lista);
 
 				if ((op_lista < 1) || (op_lista > *cont_a))
 					goto seleciona_arvbb;
 
-				cab=RetiraGeral(cab,op_lista);
+				cab=RetiraGeral(cab,op_lista,'4');
 				(*cont_a)--;
 			}
 
@@ -451,18 +442,18 @@ L_Geral * MenuArvBB(L_Geral *cab, int *cont_a)
 
 		case 3:
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - IMPRESS√ÉO DE √ÅRVOE\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - IMPRESS√O DE ¡RVORE\n");
 			printf("________________________________________________________\n\n");
 			if(*cont_a==0)
 			{
-				printf("\tN√£o h√° listas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· ·rvores. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
 			{
 				ImprimirGeral(cab,'4');
 				printf("\n________________________________________________________\n\n");
-				printf("\tPressione ENTER para voltar");
+				printf("\tPressione ENTER para voltar.");
 			}
 			getch();
 		break;
@@ -470,13 +461,13 @@ L_Geral * MenuArvBB(L_Geral *cab, int *cont_a)
 		case 4:
 
 			system("cls");
-			printf("TRABALHO ESTRUTURA DE DADOS I - SELE√á√ÉO DE √ÅRVOE\n");
+			printf("TRABALHO ESTRUTURA DE DADOS I - SELE«√O DE ¡RVORE\n");
 
 			printf("________________________________________________________\n\n");
 
 			if(*cont_a==0)
 			{
-				printf("\tN√£o h√° listas.Pressione ENTER para voltar\n");
+				printf("\tN„o h· ·rvores. Pressione ENTER para voltar.\n");
 				getch();
 			}
 			else
@@ -485,28 +476,21 @@ L_Geral * MenuArvBB(L_Geral *cab, int *cont_a)
 				printf("\n________________________________________________________\n\n");
 
 
-				seleciona_lista2:printf("N√∫mero da lista √† selecionar: ");
+				seleciona_lista2:printf("\tN˙mero da ·rvore: ");
 				fflush(stdin);
 				scanf("%d", &op_lista);
 
 
 				if ((op_lista < 1) || (op_lista > * cont_a))
-				{
-
-					printf("\r");
-			        for (int j = 0; j < 30; j++) {
-			            printf(" "); // apaga a linha anterior
-			        }
-			        printf("\r");
 					goto seleciona_lista2;
-				}
+				
 
 				cab=SelecaoArvBB(cab,op_lista);
 			}
 		break;
 
 		default:
-			printf("\nOp√ß√£o inv√°lida");
+			printf("\nOpÁ„o inv·lida");
 			getch();
 		break;
 

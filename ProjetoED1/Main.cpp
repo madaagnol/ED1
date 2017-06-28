@@ -4,29 +4,11 @@
 #include <locale.h>
 #include <string.h>
 
-#include "Pilha.c"
-#include "Pilha.h"
-
-#include "Fila.c"
-#include "Fila.h"
-
-#include "Lista.c"
-#include "Lista.h"
-
-#include "ArvBinBusca.c"
-#include "ArvBinBusca.h"
-
 #include "Menus.c"
 #include "Menus.h"
 
-#include "ListaGeral.c"
-#include "ListaGeral.h"
-
-#include "Selecao.c"
-#include "Selecao.h"
-
 int main() {
-	int menu,cont_p=0,cont_f=0,cont_l=0,cont_a=0;
+	int menu,cont_p=0,cont_f=0,cont_l=0,cont_a=0,i,j;
 	L_Geral *cab=NULL;
 
 	setlocale(LC_ALL,"");
@@ -34,18 +16,18 @@ int main() {
 	Rep_Menu: system("cls");
 	printf("TRABALHO ESTRUTURA DE DADOS I - MENU PRINCIPAL\n");
 	printf("________________________________________________________\n\n");
-	printf("Pilhas existentes: %d\n",cont_p);
-	printf("Filas existentes: %d\n",cont_f);
-	printf("Listas existentes: %d\n",cont_l);
-	printf("¡rvore existentes: %d\n",cont_a);
+	printf("\tPilhas existentes: %d\n",cont_p);
+	printf("\tFilas existentes:  %d\n",cont_f);
+	printf("\tListas existentes: %d\n",cont_l);
+	printf("\t¡rvore existentes: %d\n",cont_a);
 	printf("________________________________________________________\n\n");
-	printf("Selecione a estrutura a ser manipulada:\n");
+	printf("\tSelecione a estrutura:\n");
 	printf("\t1 - Pilha\n");
 	printf("\t2 - Fila\n");
 	printf("\t3 - Lista\n");
 	printf("\t4 - ¡rvore\n");
 	printf("\t0 - Sair\n");
-	printf("\n\tOp√ß√£o: ");
+	printf("\n\tOpÁ„o: "); 
 	scanf("%d", &menu);
 	switch(menu)
 	{
@@ -66,6 +48,26 @@ int main() {
 		break;
 
 		case 0:
+			for(i=1;i<=4;i++)
+			{
+				if(i==1)
+					for(j=1;j<=cont_p;j++)
+						RetiraGeral(cab,j,i);
+					
+				if(i==2)
+					for(j=1;j<=cont_f;j++)
+						RetiraGeral(cab,j,i);
+							
+				if(i==3)
+					for(j=1;j<=cont_l;j++)
+						RetiraGeral(cab,j,i);
+					
+				if(i==4)
+					for(j=1;j<=cont_a;j++)
+						RetiraGeral(cab,j,i);
+				
+			}
+			cab=NULL;
 			exit(1);
 		break;
 
