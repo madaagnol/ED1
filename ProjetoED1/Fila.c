@@ -1,13 +1,6 @@
 #include "Fila.h"
 #include "Lista.h"
 
-typedef struct fila Fila;
-
-struct fila
-{
-	Lista *ini,*fim;
-};
-
 Fila* CriarFila(Fila *f)
 {
 		f=(Fila* )malloc(sizeof(Fila));
@@ -19,6 +12,7 @@ Fila* CriarFila(Fila *f)
 Fila* InserirFila(Fila *f,int x)
 {
 	Lista *l = CriarLista(l);
+	l->info=x;
 	if(f->ini==NULL)
 	{
 		f->ini=l;
@@ -26,11 +20,11 @@ Fila* InserirFila(Fila *f,int x)
 	}
 	else
 	{
-		//f->fim->prox=l;
+		f->fim->prox=l;
 		f->fim=l;
 	}
 }
-/*
+
 int RetiraFila(Fila *f)
 {
 	if(!VerFilaVazia(f) && (f->ini!=NULL))
@@ -50,7 +44,7 @@ int RetiraFila(Fila *f)
 
 int VerFilaVazia(Fila *f)
 {
-	if(f==NULL)return 1;
+	if(f==NULL) return 1;
 	else return 0;
 
 }
@@ -72,4 +66,4 @@ void LiberaFila(Fila *f)
 void ImprimirFila(Fila *f)
 {
 	ImprimirLista(f->ini);
-}*/
+}

@@ -201,21 +201,19 @@ void Frequencia(ABBusca *ab, int **f, int *n)
     *n = 0;
 }
 
-
-
-void ImprimeABBusca(ABBusca *ab, int h, int altura)
+void ImprimirArvBB(ABBusca *ab, int h, int altura)
 {
   int i;
 
   if (ab != NULL) {
-    ImprimeABBusca(ab->dir, h+1, altura);
+    ImprimirArvBB(ab->dir, h+1, altura);
     for (i=0; i < h; i++) 
       printf("   ");
     printf("%d",ab->info);
     for (i=0; i < altura-h; i++) 
       printf("---");
     printf("\n");
-    ImprimeABBusca(ab->esq, h+1,altura);    
+   ImprimirArvBB(ab->esq, h+1,altura);    
   }
 }
 

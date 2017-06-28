@@ -1,4 +1,10 @@
-typedef struct fila Fila;
+#ifndef _Fila_H_
+#define _Fila_H_
+
+typedef struct fila
+{
+	Lista *ini,*fim;
+}Fila;
 
 /*Cria a fila*/
 Fila* CriarFila();
@@ -17,3 +23,6 @@ void LiberaFila(Fila *f);
 
 /*Imprime a fila*/
 void ImprimirFila(Fila *f);
+
+#endif
+

@@ -2,17 +2,9 @@
 #include "Pilha.h"
 #define max 10
 
-typedef struct pilha Pilha;
-
-struct pilha
-{
-	Lista *topo;
-};
-
 Pilha* CriarPilha(Pilha *p)
 {
 	p = (Pilha*)malloc(sizeof(Pilha));
-	p->topo=CriarLista(p->topo);
 	p->topo=NULL;
 	return p;
 }
@@ -25,51 +17,44 @@ Pilha* InserirPilha(Pilha *p,int x)
 
 int RetiraPilha(Pilha *p)
 {
-
-	if(!VerPilhaVazia(p) && p->topo!=NULL)
-	{
-		Lista *aux=p->topo;
-		//p->topo=p->topo->prox;
+	Lista *aux=p->topo;
+	
+	if (p->topo != NULL) {
+		p->topo=p->topo->prox;
 		free(aux);
+	
+		printf("\n\n\t\tTopo retirado");
+	} else {
+		printf ("\n\n\t\tErro. Pilha vazia.");
 	}
-	else
-	{
-		printf("\n\n\t\tPilha vazia ou inexistente");
-		getch();
-	}
+	getch();
 
 }
 
 void LiberaPilha(Pilha *p)
 {
-	if(!VerPilhaVazia(p))
+	if(p!=NULL)
 	{
-		Pilha *aux;
-		LiberaLista(p->topo);
-		free(p);
-	}
+		if(!VerPilhaVazia(p))
+		{
+			Pilha *aux;
+			LiberaLista(p->topo);
+			free(p);
+		}
+
+	}		
 	else
 	{
 		printf("\n\n\t\tPilha inexistente");
 		getch();
 	}
+		
 
 }
 
 void ImprimirPilha(Pilha *p)
 {
 	ImprimirLista(p->topo);
-}
-
-int pilha_ver_topo(Pilha *p)
-{
-/*	if(!VerPilhaVazia(p) && p->topo!=NULL)
-		printf("\n\n\t\t\tTopo da pilha : %d",p->topo->info);
-
-	else printf("\n\n\t\tERRO, PILHA VAZIA");
-
-	printf("\n\n\t\tPRESSIONE ENTER PARA CONTINUAR");
-	getch();*/
 }
 
 int VerPilhaVazia(Pilha *p)

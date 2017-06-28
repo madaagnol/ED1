@@ -1,5 +1,10 @@
+#ifndef _Pilha_H_
+#define _Pilha_H_
 
-typedef struct pilha Pilha;
+typedef struct pilha
+{
+	Lista *topo;
+}Pilha;
 
 #define max 10
 
@@ -20,3 +25,9 @@ void LiberaPilha();
 
 /*Imprime a pilha toda*/
 void ImprimirPilha();
+
+#endif
+
+
+
+

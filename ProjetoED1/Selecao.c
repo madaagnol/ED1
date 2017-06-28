@@ -40,13 +40,13 @@ L_Geral* SelecaoPilha(L_Geral *cab,int v)
 		break;
 
 		case 2:
+			RetiraPilha(aux->estrutura.pilha);
+			
 			printf("________________________________________________________\n\n");
 			ImprimirPilha(aux->estrutura.pilha);
 			printf("\n\n________________________________________________________\n\n");
-
-			printf("\tDigite o item que deseja excluir:\n");
-			scanf("%d",&resp);
-			//aux->estrutura.pilha=RetiraPilha(aux->estrutura.pilha,resp);
+			getch();
+			
 		break;
 
 		case 3:
@@ -61,7 +61,6 @@ L_Geral* SelecaoPilha(L_Geral *cab,int v)
 	}
 	goto returnmenu;
 }
-
 
 L_Geral* SelecaoFila(L_Geral *cab,int v)
 {
@@ -100,22 +99,21 @@ L_Geral* SelecaoFila(L_Geral *cab,int v)
 	        fflush(stdin);
 	        scanf("%d", &resp);
 
-	        //aux->estrutura.fila = InserirFila(aux->estrutura.fila, resp);
+	        aux->estrutura.fila = InserirFila(aux->estrutura.fila, resp);
 	    break;
 
 	    case 2:
+	        RetiraFila(aux->estrutura.fila);	    	
 	        printf("________________________________________________________\n\n");
-	       // ImprimirFila(aux->estrutura.fila);
+	        ImprimirFila(aux->estrutura.fila);
 	        printf("\n\n________________________________________________________\n\n");
+	        getch();
 
-	        printf("\tDigite o item que deseja excluir:\n");
-	        scanf("%d",&resp);
-	       // aux->estrutura.fila=RetiraFila(aux->estrutura.fila,resp);
 	    break;
 
 	    case 3:
 	    printf("\n\tFila %s: ",aux->nome);
-	     //   ImprimirFila(aux->estrutura.fila);
+	        ImprimirFila(aux->estrutura.fila);
 	        getch();
 	    break;
 

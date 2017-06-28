@@ -1,10 +1,4 @@
-struct lista
-{
-    int info;
-    struct lista* prox;
-};
-
-typedef struct lista Lista;
+#include "Lista.h"
 
 /* função de criação: retorna uma lista vazia */
 Lista* CriarLista(Lista *novo)
@@ -17,8 +11,8 @@ Lista* CriarLista(Lista *novo)
 /* inserção no início: retorna a lista atualizada */
 Lista* InserirLista(Lista* l, int i)
 {
-    Lista* novo = (Lista*) malloc(sizeof(Lista));
-    novo->info = i;
+    Lista* novo = CriarLista(novo);
+    novo->info = i; 
     novo->prox = l;
     return novo;
 }
@@ -27,7 +21,7 @@ Lista* InserirLista(Lista* l, int i)
 void ImprimirLista(Lista* l)
 {
     Lista* p;
-    for (p = l; p->prox!= NULL; p = p->prox)
+    for (p = l; p!= NULL; p = p->prox)
         printf("%d ", p->info);
 }
 

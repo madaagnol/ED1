@@ -23,18 +23,17 @@ void ImprimirGeral(L_Geral *cab,char flag)
 	int contador_percorre = 0;
 
 	while (aux_percorre!= NULL)
-			{
-				if (flag == aux_percorre->flag)
-				{
-					contador_percorre++;
-					printf("%d) - %s\n", contador_percorre, aux_percorre->nome);
-				}
-
-				aux_percorre = aux_percorre->prox;
-			}
+	{
+		if (flag == aux_percorre->flag)
+		{
+			contador_percorre++;
+			printf("%d) - %s\n", contador_percorre, aux_percorre->nome);
+		}
+		aux_percorre = aux_percorre->prox;
+	}
 }
 
-L_Geral* RetiraGeral(L_Geral* l, int v,char rflag)
+L_Geral* RetiraGeral(L_Geral* l, int v)
 {
     L_Geral* ant = NULL;
     L_Geral* p = l;
@@ -45,7 +44,7 @@ L_Geral* RetiraGeral(L_Geral* l, int v,char rflag)
     /* procura elemento na lista, guardando anterior */
     while (p != NULL && cont!=v)
     {
-    	if(p->flag == rflag)
+    	if(p->flag == '4')
 			cont++;
         ant = p;
         p = p->prox;
@@ -66,6 +65,8 @@ L_Geral* RetiraGeral(L_Geral* l, int v,char rflag)
         {
             ant->prox = p->prox;
         }
+        
+        
 
     free(p);
     return l;
@@ -75,11 +76,11 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 {
 	L_Geral *no_list;
 
-		if(flag=='1')
+	if(flag=='1')
 	{
 		Pilha *nova_pilha;
 		no_list = (L_Geral *)malloc(sizeof(L_Geral)); //Aloca um n� da lista principal
-		nova_pilha=CriarPilha(nova_pilha); //Cria uma nova lista
+	//	nova_pilha=CriarPilha(nova_pilha); //Cria uma nova lista
 		no_list->estrutura.pilha=nova_pilha; //Faz a lista geral criada apontar para a cabeça da pilha criada
 
 		no_list->flag = '1';
@@ -99,7 +100,7 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 		//nova_fila=CriarFila(nova_fila); //Cria uma nova lista
 		no_list->estrutura.fila=nova_fila; //Faz a lista geral criada apontar para a cabeça da fila criada
 
-		no_list->flag = '3';
+		no_list->flag = '2';
 		printf("Digite o nome da fila: ");
 		fflush(stdin);
 		gets(no_list->nome);
@@ -113,7 +114,7 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 	{
 		Lista *nova_lista;
 		no_list = (L_Geral *)malloc(sizeof(L_Geral)); //Aloca um n� da lista principal
-		nova_lista=CriarLista(nova_lista); //Cria uma nova lista
+		//nova_lista=CriarLista(nova_lista); //Cria uma nova lista
 		no_list->estrutura.lista=nova_lista; //Faz a lista geral criada apontar para a cabeça da lista criada
 
 		no_list->flag = '3';
@@ -122,9 +123,8 @@ Lista_Geral* CriarGeral(L_Geral *cab,char flag,int *cont)
 		gets(no_list->nome);
 
 		no_list->prox=cab;
-		cab=no_list; //Faz a lista criada ser inserida na primeira posição
 		(*cont)++;
-		return cab;
+		return no_list;
 	}
 
 

@@ -105,7 +105,7 @@ void EliminaRepetidos(ABBusca **ab);
    sera precedido de h caracteres '-' antes de sua impressao. A funcao
    e chamada com h=0. */
 
-void ImprimeABBusca(ABBusca *ab, int h, int altura);
+void ImprimirArvBB(ABBusca *ab, int h, int altura);
 
 /* Arvore Equilibrada: aquela que os numeros de nos das subarvores
    direita e esquerda nao diferem mais do que 1 para qualquer no. */
